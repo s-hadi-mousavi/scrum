@@ -1,0 +1,6 @@
+<%= form_for(@task) do |t| %>
+  <%= t.text_area :description, :placeholder => "Summarize the task", class: "description" %>
+  <br>
+  <%= t.collection_select(:project_id, @hprojects, :id, :name) %>
+  <%= t.submit "Create Task", class: "btn btn-primary" %>
+<% end %>

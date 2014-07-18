@@ -1,0 +1,16 @@
+<h3> <%= @user.name %>
+</h3>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#group-tab" data-toggle="tab">Groups</a></li>
+    <li><a href="#project-tab" data-toggle="tab">Projects</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="group-tab">
+      <%= render @user.groups %>
+    </div>
+    <div class="tab-pane" id="project-tab">
+      <%= render @user.projects %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyString
+  name: MyString
+  user_id: 
+  task_id: 
+  project_id: 
+  group_id: 
+  bubble: false
+  flags_id: 
+
+two:
+  content: MyString
+  name: MyString
+  user_id: 
+  task_id: 
+  project_id: 
+  group_id: 
+  bubble: false
+  flags_id: 

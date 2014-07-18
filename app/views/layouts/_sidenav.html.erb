@@ -1,0 +1,43 @@
+<script>
+  $(document).ready(function(){
+    $('#showSideNavButton').click(function() {
+      $(".side-nav div").toggleClass( "active" )
+    });
+  });
+</script>
+<button class="btn" id="showSideNavButton"> Show</button>
+<div class="side-nav">
+  <div class="inner-side-nav">
+    <ul class="nav nav-list">
+      <% @hgroups.each do |g| %>
+        <li>
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" href="#plist<%= g.id %>">
+                <%= g.name %>
+             </a>
+           </div>
+           <div id="plist<%= g.id %>" class="accordion-body collapse">
+             <ul>
+               <% g.projects.each do |p| %>
+                 <li>
+                      <div class="accordion-heading">
+                        <a class="accordion-toggle" title="<%= project_url(p) %>" data-toggle="collapse" href="#tlist<%= g.id %>-<%= p.id %>">
+                          <%= p.name %>
+                       </a>
+                     </div>
+                     <div id="tlist<%= g.id %>-<%= p.id %>" class="accordion-body collapse">
+                       <ul>
+                         <% p.tasks.each do |t| %>
+                           <li><a><%= t.description %></a></li>
+                         <% end %>
+                       </ul>
+                     </div>
+                </li>
+               <% end %>
+             </ul>
+           </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

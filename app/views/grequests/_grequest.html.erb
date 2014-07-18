@@ -1,0 +1,4 @@
+<%= render grequest.user %>
+<%= link_to "Accept", "/groups/" + grequest.group_id.to_s + "/accept/" +grequest.id.to_s %> 
+<%= link_to "Decline", "/groups/" + grequest.group_id.to_s + "/decline/" +grequest.id.to_s %> 
+<br>

@@ -1,0 +1,16 @@
+<div class = "center" id = "signin">
+
+  <%= form_for(@group) do |g| %>
+    <div class = "field">
+    
+      <%= g.text_field :name, :placeholder => "Insert Name Here"%>
+
+      <br>
+
+
+      <%= g.submit "Create Group", class: "btn btn-large btn-primary" %></div>
+
+    <% end %>
+</div>
+
+</body>

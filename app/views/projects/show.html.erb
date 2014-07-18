@@ -1,0 +1,58 @@
+<div class="wrapper">
+  <div class ="alignleft title">
+<h1> <%= @project.name %>
+</h1>
+<h5>Project Description</h5>
+<%= @project.description %>
+</div>
+<div class="alignright">
+<h5>Group</h5>
+<%= render @project.group %>
+
+<% if current_user.groups.include? @project.group and !@project.members.include? current_user %>
+  <% if Prequest.find_by_user_id_and_project_id(current_user.id, @project.id) %>
+    <%= link_to '#', class: "btn disabled btn-warning" do %>
+      <i class="icon-exclamation-sign icon-white"></i>
+      Requested
+    <% end %>
+  <% else %>
+    <%= link_to 'Join', join_project_path(@project), class: "btn btn-primary" %>
+  <% end %>
+<% else %>
+  <%= link_to '#', class: "btn disabled btn-success" do %>
+    <i class="icon-ok icon-white"></i>
+    Member
+  <% end %>
+<% end %>
+
+<% if @project.mods.include? current_user %>
+  <%= button_to "Delete",@project, method: "delete", class: "btn btn-danger" %>
+<% end %>
+</div>
+</div>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#task-tab" data-toggle="tab">Tasks</a></li>
+    <li ><a href="#feed-tab" data-toggle="tab">Feed</a></li>
+    <li><a href="#member-tab" data-toggle="tab"> Members</a></li>
+    <% if @project.mods.include? current_user %>
+      <li ><a href="#join-tab" data-toggle="tab">Requests to Join</a></li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="task-tab">
+            <a href="#newTaskModal" class="accordion-toggle btn btn-success" data-toggle="collapse">New Task</a>
+   
+          <%= render "/tasks/new" %>
+      <%= render @project.tasks %>
+    </div>
+    <div class="tab-pane" id="feed-tab">
+    </div>
+    <div class="tab-pane" id="member-tab">
+      <%= render @project.members %>
+    </div>
+    <div class="tab-pane" id="join-tab">
+         <%= render @project.prequests %>  
+    </div>
+  </div>
+</div>

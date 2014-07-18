@@ -1,0 +1,17 @@
+<link rel="stylesheet" type="text/css" href="/assets/partials.css">
+<div class="partial">
+  <a href="/projects/<%= project.id %>" class="hidden-link">
+    <h2> <%= project.name %> </h2>
+    <div>
+      <%= project.description %>
+    </div>
+    <% if project.mods.include? current_user %>
+      <%= button_to "Delete",project, method: "delete", class: "btn btn-danger" %>
+    <% end %>
+    <% if current_user.groups.include? project.group and !project.members.include? current_user %>
+      <%= link_to "Join", join_project_path(project) , class: "btn" %>
+    <% end %>
+    <br>
+  </a>
+</div>
+

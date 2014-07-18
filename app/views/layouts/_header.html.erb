@@ -1,0 +1,60 @@
+<div class="header-container navbar navbar-inner">    
+<span class = " h1 alignleft hpad">
+  <%= link_to "Scrum", home_path, class: "brand" %>
+</span>
+<div class="nav-collapse in collapse alignright" id="main-menu" style="height: auto;">
+  <ul class="nav" id="main-menu-left">
+  <% if signed_in? %>
+    <li> 
+      <a class="hover-dropdown" href="/projects">Projects</a>
+      <ul class="hover-dropdown-menu">
+        <% @hprojects.each do |p| %>
+          <li> <%= link_to p.name, project_path(p) %></li>
+        <% end %>
+        <li class="divider"></li>
+        <li><%= link_to "Browse", browse_projects_path %></li>
+        <li><a href="/projects/new">New Project</a></li>
+      </ul>
+    </li>
+    <li> 
+      <a class="hover-dropdown" href="/tasks">Tasks</a>
+      <ul class="hover-dropdown-menu">
+        <% @htasks.each do |t| %>
+          <li> <%= link_to t.description, task_path(t) %></li>
+        <% end %>
+        <li class="divider"></li>
+        <li><%= link_to "Browse", browse_tasks_path %></li>
+        <li><a href="/tasks/new">New Task</a></li>
+      </ul>
+    </li>
+    <li>
+      <a class="hover-dropdown" href="/groups">Groups</a>
+      <ul class="hover-dropdown-menu">
+        <% @hgroups.each do |g| %>
+          <li> <%= link_to g.name, group_path(g) %></li>
+        <% end %>
+        <li class="divider"></li>
+        <li><%= link_to "Browse", browse_groups_path %></li>
+        <li><%= link_to "New Group", new_group_path %></li>
+      </ul>
+    </li>
+    <li>
+     <%= link_to "Users", users_path, class: "hover-dropdown" %>  
+      <ul class="hover-dropdown-menu">
+        <li>
+          <%= link_to "My Profile", user_path(current_user)%>
+        </li>
+      </ul>
+    </li>
+    <li>
+    <%= link_to "Sign out", signout_path, class: "hover-dropdown" %> 
+    <li>
+  <% else %>
+    <li>
+      <%= link_to "Sign in", signin_path%>
+    </li> 
+  <% end %>
+</ul>
+</div>
+</div>
+

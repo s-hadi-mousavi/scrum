@@ -1,0 +1,12 @@
+<div class = "center" id = "signin">
+  <%= form_for(:session, url: sessions_path) do |f| %>
+    <div class = "field">
+      <%= f.text_field :email, :placeholder => "Insert Email Here"%>
+      <%= f.password_field :password, :placeholder => "Password"%>
+      <br>
+      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+    </div>
+  <% end %>
+  <span class = "posttitle"><p>New user? <%= link_to "Sign up now!", signup_path %></p></span>
+  <br>
+</div>

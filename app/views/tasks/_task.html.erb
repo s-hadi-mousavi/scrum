@@ -1,0 +1,16 @@
+<link rel="stylesheet" type="text/css" href="/assets/partials.css">
+<div class="partial">
+  <a href="/tasks/<%= task.id %>" class="hidden-link">
+    <div>
+      <%= task.description %>
+    </div>
+    <% if task.users.include? current_user %>
+      <%= button_to "Delete",task, method: "delete", class: "btn btn-danger" %>
+    <% end %>
+    <% if current_user.projects.include? task.project and !task.users.include? current_user %>
+      <%= link_to "Join", join_task_path(task) , class: "btn" %>
+    <% end %>
+    <br>
+  </a>
+</div>
+

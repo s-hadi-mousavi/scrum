@@ -1,0 +1,4 @@
+<%= render prequest.user %>
+<%= link_to "Accept", "/projects/" + prequest.project_id.to_s + "/accept/" +prequest.id.to_s %> 
+<%= link_to "Decline", "/projects/" + prequest.project_id.to_s + "/decline/" +prequest.id.to_s %> 
+<br>

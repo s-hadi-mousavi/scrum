@@ -1,0 +1,9 @@
+.partial {
+}
+
+.hidden-link:hover,
+.hidden-link:focus,
+.hidden-link:hover *,
+.hidden-link:focus * {
+  text-decoration: none !important;
+}

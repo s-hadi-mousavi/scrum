@@ -1,0 +1,22 @@
+<div class = "center" id = "signin">
+
+  <%= form_for(@user) do |f| %>
+    <div class = "field">
+      <%= render 'shared/error_messages' %>
+    
+      <%= f.text_field :name, :placeholder => "Insert Name Here"%>
+      <br>
+      <%= f.text_field :email, :placeholder => "Insert Email Here"%>
+
+      <br>
+      <%= f.password_field :password, :placeholder => "Password" %>
+      <br>
+
+      <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation" %>
+      <br>
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %></div>
+
+    <% end %>
+</div>
+
+</body>
